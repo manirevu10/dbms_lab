@@ -1,0 +1,39 @@
+display the names of all the employees who are working in depart number 20
+select empno,salary,salary+commission from employee
+
+EMPNO	SALARY	SALARY+COMMISSION
+1	1200000	1210000
+2	800000	850000
+3	1000000	 
+4	1000000	 
+5	500000	520000
+6	600000	 
+7	600000	 
+8	800000	1400000
+9	400000	900000
+10	120000	 
+11	80000	 
+12	120000	 
+
+display the employee no salary and total salary for all the employees
+select ename from employee where job = 667 and salary>100000
+
+ENAME
+Suresh
+Kumar
+display the names of all the employee number and name who are earning comm
+select empno,ename from employee where commission is not null
+EMPNO	ENAME
+1	Venkat
+2	Nirmala
+5	Krishna
+8	Aravind
+9	Srikanth
+display the employee number and name who do not earn any comm
+select empno,ename from employee where commission is null
+EMPNO	ENAME
+1	Venkat
+2	Nirmala
+5	Krishna
+8	Aravind
+9	Srikanth
