@@ -37,3 +37,29 @@ EMPNO	ENAME
 5	Krishna
 8	Aravind
 9	Srikanth
+
+display the names of the employees who are working as clerks,salesman or analyst and drawing a salary more than 250000
+
+
+select ename from employee e, job j 
+ where e.job=j.jcode and 
+ e.salary >250000 and j.name in  ('clerk', 'salesman', 'Analyst') 
+
+ENAME
+Pradeep
+Srinivas
+
+
+
+display the names of employees whose name starts with starts alphabet S.
+
+display the names of employees whose name starts with ends alphabet S.
+display the names of employees whose name have second alphabet a in their name
+
+display the names of employees whose name 
+
+
+
+
+find the ma
+
