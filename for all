@@ -1,0 +1,3 @@
+select ename from employee e, job j 
+ where e.job=j.jcode and 
+ e.salary >250000 and j.name in  ('clerk', 'salesman', 'Analyst') 
