@@ -1,0 +1,34 @@
+Display the maximum salary being paid to Clerk
+
+select max(salary) from employee e , job j 
+where e.job = j.jcode and j.name = 'Clerk'
+
+MAX(SALARY)
+120000
+
+display the maximum salary being paid to depart number 20
+
+select max(salary) from employee where deptno=20
+
+MAX(SALARY)
+800000
+
+display the average salary drawn by managers
+
+select avg(salary) 
+from employee
+where empno in (select distinct(mgr_no) from employee)
+
+AVG(SALARY)
+866666.667
+
+display the total salary drawn by ANALYST working in depart number 40
+
+select  sum(salary)  from employee e,job j 
+where e.job = j.jcode and j.name = 'Analyst' and e.deptno=40
+
+SUM(SALARY)
+1000000
+
+
+
