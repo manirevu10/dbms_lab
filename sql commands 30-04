@@ -88,3 +88,32 @@ SUM(SALARY) 	DEPTNO
 80000 		30
 120000 		20
 120000 		23
+
+
+
+dislay the name of the employee who is earning highest salary
+select ename from employee where salary = (select max(salary) from employee)
+
+ENAME
+Venkat 
+
+
+display the employee number and name for employee working as clerk and earning highest salary among clerks
+
+select ename, empno 
+from employee
+where job =  ( select jcode
+                        from job 
+                        where name = 'Clerk') 
+            and 
+            salary = (select max(salary) 
+                            from employee 
+                            where job =  ( select jcode
+                                                    from job 
+                                                    where name = 'Clerk') )
+
+
+ENAME 	EMPNO
+Suresh 	10
+Kumar 	12
+
