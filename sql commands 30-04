@@ -29,3 +29,62 @@ select ename  from employee where deptno=20
 ENAME
 Nirmala
 Kumar 
+
+
+no of employees in deach department that has location in hyderabad and have more than 1 employee
+select count(*), d.deptno
+from employee e, dept d, location l
+where e.deptno = d.deptno and d.location  = l.lcode and l.name = 'Hyderabad'
+group by d.deptno
+having count(*) > 1
+
+no of employees for each job name
+select count(*),j.name from employee e, job j
+where e.job = j.jcode
+group by j.name
+
+COUNT(*) 	NAME
+2 	Manager
+2 	Analyst
+4 	Staff
+3 	Clerk
+1 	President
+
+deptname, count of employee of those dept that have a average salary > 40000
+select d.name, count(*)
+from employee e, dept d
+where e.deptno = d.deptno
+group by d.name
+having avg(salary) > 40000
+
+NAME 	COUNT(*)
+Research 	3
+Sales 	5
+Operations 	4
+
+
+
+for each jobcode give total salary
+
+select sum(salary) from employee group by job
+
+SUM(SALARY)
+1200000
+1600000
+2000000
+320000
+2100000
+
+
+
+sum of salary for clerks for each dept
+
+select sum(salary),e.deptno
+from employee e, job j
+where e.job = j.jcode and j.name='Clerk'
+group by e.deptno
+
+SUM(SALARY) 	DEPTNO
+80000 		30
+120000 		20
+120000 		23
