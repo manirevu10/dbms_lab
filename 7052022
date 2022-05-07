@@ -1,0 +1,135 @@
+SELECT ename 
+FROM employee 
+WHERE job = (SELECT jcode 
+             FROM job
+             WHERE name = 'Staff')
+             and salary > any (SELECT salary 
+                              FROM employee
+                              WHERE job = (SELECT jcode 
+                               FROM job
+                               WHERE name = 'Clerk'))
+
+out put:-
+
+ENAME
+Krishna
+Deepa
+Keerthi
+Srikanth
+
+
+4) display the names of clerks who earn a salary more than lowest salary of any employee whose job role is staff
+
+SELECT ename 
+FROM employee 
+WHERE job = (SELECT jcode 
+             FROM job
+             WHERE name = 'clerk')
+             and salary > (SELECT min(salary) 
+                              FROM employee
+                              WHERE job = (SELECT jcode 
+                               FROM job
+                               WHERE name = 'staff'))
+
+out put:-
+no data found
+
+5) select e name,sal,deptno from emp where sail in (select max(sal) from emp group deptno
+
+ 
+SELECT ename,salary,deptno
+FROM employee e
+where salary =(select max(salary)
+           FROM employee 
+           where deptno = e.deptno)
+
+out put:-
+ENAME	SALARY	DEPTNO
+Venkat	1200000	40
+Nirmala	800000	20
+Srinivas	1000000	30
+Krishna	500000	12
+Deepa	600000	23
+Keerthi	600000	24
+Srikanth	400000	34
+
+
+
+6) display the names of the employees who earn highest salaries in their respective job groups
+
+
+SELECT ename,salary,job
+FROM employee e
+where salary =(select max(salary)
+           FROM employee 
+           where job = e.job)
+
+
+ENAME	SALARY	JOB
+Venkat	1200000	672
+Nirmala	800000	671
+Pradeep	1000000	669
+Srinivas	1000000	669
+Deepa	600000	668
+Keerthi	600000	668
+Aravind	800000	671
+Suresh	120000	667
+Kumar	120000	667
+
+8) display the employee names who are working in kakinada 
+
+SELECT ename
+FROM employee
+WHERE deptno in (SELECT deptno
+                FROM dept
+                WHERE location = (SELECT lcode
+                                  FROM location 
+                                  WHERE name = 'Kakinada'))
+
+
+out put;-
+
+ENAME
+Krishna
+
+7) display the employee names who are working in 'operations' department. 
+
+SELECT ename
+FROM employee
+WHERE deptno in (SELECT deptno
+                FROM dept
+                WHERE name = 'Operations')
+
+out put:-
+ENAME
+Venkat
+Pradeep
+Keerthi
+Srikanth
+
+9)display the names of the employee from department 30 with salry greater thean that of any employee working in other department
+
+SELECT ename 
+FROM employee
+WHERE deptno = 30
+and salary > any (SELECT salary 
+                 FROM employee
+                 WHERE deptno != 30)
+
+
+output:-
+ENAME
+Srinivas
+Aravind
+
+
+10)
+SELECT ename 
+FROM employee
+WHERE deptno = 30
+and salary > all (SELECT salary 
+                 FROM employee
+                 WHERE deptno != 30)
+
+output:-
+no data found
